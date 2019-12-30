@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="IR-fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KarBin</title>
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css"
+    />
+    <!-- Styles -->
+  </head>
+  <body>
+    <main class="container">
+      <section class="menu-box">
+        <!-- بزودی در این مکان یک منو ساده افتتاح می گردد. -->
+      </section>
+
+      <section class="main">
+        <div class="search-box">
+          <input
+            type="search"
+            class="search-box__input"
+            placeholder="عنوان کار مورد نظر شما ..."
+          />
+        </div>
+        <div class="todo-box">
+          <ul class="todo-list">
+            <li
+              class="todo-list__items"
+              id="todo-list__items"
+              onclick="taskDone()"
+            >
+              ایتم 1
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="side-panel">
+        <svg class="add-todo" id="addTodoBTN" onclick="showPanel()">
+          <use xlink:href="images/feather-sprite.svg#plus" />
+        </svg>
+
+        <div class="add-todo-panel" id="panel">
+          <form class="add-todo-form">
+            <span class="add-todo-form__title">افزودن یک وظیفه جدید</span>
+            <input
+              type="text"
+              id="task-name"
+              placeholder="نام فعالیت"
+              class="todo-name-field"
+            />
+            <div class="todo-details">
+              <label for="todo-in-month">تعداد در ماه</label>
+              <input
+                type="number"
+                id="in-month"
+                value="5"
+                id="todo-in-month"
+                class="todo-details__input"
+              />
+
+              <label for="todo-in-month">دقیقه در روز</label>
+              <input
+                type="number"
+                id="in-day"
+                value="10"
+                id="min-in-day"
+                class="todo-details__input"
+              />
+            </div>
+            <div class="add-todo-form__btns">
+              <span href="#" class="closeBTN" onclick="closePanel()"
+                >انصراف</span
+              >
+              <input type="submit" value="ثبت" class="sendBTN" />
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+    <!-- Scripts -->
+    <script src="main.js"></script>
+    <!-- Scripts -->
+  </body>
+</html>
