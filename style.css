@@ -198,11 +198,11 @@ a {
   display: flex;
   justify-content: space-between;
 }
-.closeBTN {
+.close-btn {
   color: #000;
   cursor: pointer;
 }
-.sendBTN {
+.send-btn {
   padding: 5px 40px;
   font: 11pt Vazir;
   border-radius: 5px;

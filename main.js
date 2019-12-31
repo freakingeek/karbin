@@ -1,10 +1,30 @@
+// Prevent Form Submit
+document.querySelector(".add-todo-form").addEventListener(
+  "click",
+  function(event) {
+    event.preventDefault();
+  },
+  false
+);
+
 // Get Task
 const getTask = () => {
-  let taskName = document.getElementById("task-name").value;
-  console.log(taskName);
+  let task = {
+    name: document.getElementById("task-name").value,
+    inMonth: document.getElementById("todo-in-month").value,
+    inDay: document.getElementById("min-in-day").value
+  };
+  printTask(task);
+};
 
-  // let inMonth = document.getElementById("in-month").value;
-  // let inDay = document.getElementById("in-day").value;
+const printTask = task => {
+  let todoContainer = document.querySelector(".todo-list");
+  let todoKhod = document.createElement("li");
+  todoKhod.classList.add("todo-list__items");
+  todoKhod.textContent = task.name;
+  todoContainer.appendChild(todoKhod);
+
+  closePanel();
 };
 
 // Show add-todo Panel
@@ -23,7 +43,12 @@ const closePanel = () => {
   addTodoBTN.classList.toggle("rotate-15");
 };
 
+// Task Done [Change Color]
+
 const taskDone = () => {
-  let todoItem = document.getElementById("todo-list__items");
+  let todoItem = document.querySelector(".todo-list__items");
   todoItem.classList.toggle("task-done");
 };
+
+// let todoLi = document.querySelector(".todo-list__items");
+// todoLi.setAttribute("onClick", "taskDone()");

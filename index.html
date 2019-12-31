@@ -29,13 +29,7 @@
         </div>
         <div class="todo-box">
           <ul class="todo-list">
-            <li
-              class="todo-list__items"
-              id="todo-list__items"
-              onclick="taskDone()"
-            >
-              ایتم 1
-            </li>
+            <li class="todo-list__items">ایتم 1</li>
           </ul>
         </div>
       </section>
@@ -58,8 +52,8 @@
               <label for="todo-in-month">تعداد در ماه</label>
               <input
                 type="number"
-                id="in-month"
-                value="5"
+                min="1"
+                value="1"
                 id="todo-in-month"
                 class="todo-details__input"
               />
@@ -67,17 +61,22 @@
               <label for="todo-in-month">دقیقه در روز</label>
               <input
                 type="number"
-                id="in-day"
+                min="10"
                 value="10"
                 id="min-in-day"
                 class="todo-details__input"
               />
             </div>
             <div class="add-todo-form__btns">
-              <span href="#" class="closeBTN" onclick="closePanel()"
+              <span href="#" class="close-btn" onclick="closePanel()"
                 >انصراف</span
               >
-              <input type="submit" value="ثبت" class="sendBTN" />
+              <input
+                type="submit"
+                value="ثبت"
+                class="send-btn"
+                onclick="getTask()"
+              />
             </div>
           </form>
         </div>
