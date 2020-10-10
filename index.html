@@ -4,86 +4,85 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KarBin</title>
-    <!-- Styles -->
+    <meta name="description" content="برای اینکه یادت نره، به کاربین بسپارش، همه کارهای امروزت رو یکجا ببین">
+    <title>کاربین - همه کارهای امروزت رو یکجا ببین</title>
+    <!-- Links -->
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdn.fontcdn.ir/Font/Persian/Vazir/Vazir.css"
     />
-    <!-- Styles -->
+
+    <script src="main.js" defer></script>
+    <!-- Links -->
   </head>
   <body>
     <main class="container">
-      <section class="menu-box">
-        <!-- بزودی در این مکان یک منو ساده افتتاح می گردد. -->
-      </section>
+      <div class="todos">
+        <!-- Search Box -->
+        <input
+          type="search"
+          class="input todos__search-input"
+          placeholder="عنوان کار مورد نظر شما ..."
+        />
 
-      <section class="main">
-        <div class="search-box">
+        <!-- Todo List -->
+        <ul class="todos__todos-list">
+          <!-- <li class="input todos__items">وظیفه</li> -->
+        </ul>
+      </div>
+
+      <!-- Add todo button -->
+      <svg class="add-todo-button">
+        <use href="images/feather-sprite.svg#plus" />
+      </svg>
+
+      <!-- Add todo modal -->
+      <div class="add-todo-modal">
+        <form class="add-todo-modal__form">
+          <span class="add-todo-modal__title">افزودن یک وظیفه جدید</span>
+          
           <input
-            type="search"
-            class="search-box__input"
-            placeholder="عنوان کار مورد نظر شما ..."
+            type="text"
+            id="task-name"
+            placeholder="نام فعالیت"
+            class="input add-todo-modal__input"
           />
-        </div>
-        <div class="todo-box">
-          <ul class="todo-list">
-            <li class="todo-list__items">ایتم 1</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="side-panel">
-        <svg class="add-todo" id="addTodoBTN" onclick="showPanel()">
-          <use xlink:href="images/feather-sprite.svg#plus" />
-        </svg>
-
-        <div class="add-todo-panel" id="panel">
-          <form class="add-todo-form">
-            <span class="add-todo-form__title">افزودن یک وظیفه جدید</span>
+          
+          <div class="add-todo-modal__details">
+            <label for="number-per-month">تعداد در ماه</label>
             <input
-              type="text"
-              id="task-name"
-              placeholder="نام فعالیت"
-              class="todo-name-field"
+              type="number"
+              placeholder="1"
+              id="number-per-month"
+              class="todo-details__input"
             />
-            <div class="todo-details">
-              <label for="todo-in-month">تعداد در ماه</label>
-              <input
-                type="number"
-                min="1"
-                value="1"
-                id="todo-in-month"
-                class="todo-details__input"
-              />
 
-              <label for="todo-in-month">دقیقه در روز</label>
-              <input
-                type="number"
-                min="10"
-                value="10"
-                id="min-in-day"
-                class="todo-details__input"
-              />
-            </div>
-            <div class="add-todo-form__btns">
-              <span href="#" class="close-btn" onclick="closePanel()"
-                >انصراف</span
-              >
-              <input
-                type="submit"
-                value="ثبت"
-                class="send-btn"
-                onclick="getTask()"
-              />
-            </div>
-          </form>
-        </div>
-      </section>
+            <label for="minutes-a-day">دقیقه در روز</label>
+            <input
+              type="number"
+              placeholder="10"
+              id="minutes-a-day"
+              class="todo-details__input"
+            />
+          </div>
+          
+          <div class="add-todo-modal__buttons">
+            <span
+              href="#"
+              class="button button_state-close"
+              onclick="closePanel()"
+              >انصراف</span
+            >
+
+            <input
+              type="submit"
+              value="ثبت"
+              class="button button_state-submit"
+            />
+          </div>
+        </form>
+      </div>
     </main>
-    <!-- Scripts -->
-    <script src="main.js"></script>
-    <!-- Scripts -->
   </body>
 </html>

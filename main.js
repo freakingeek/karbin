@@ -1,54 +1,83 @@
-// Prevent Form Submit
-document.querySelector(".add-todo-form").addEventListener(
-  "click",
-  function(event) {
-    event.preventDefault();
-  },
-  false
-);
+let tasks = []
+const addTodoPanel = document.querySelector(".add-todo-modal")
+const todoForm = document.querySelector(".add-todo-modal__form")
+const addTodoButton = document.querySelector('.add-todo-button')
 
-// Get Task
-const getTask = () => {
-  const task = {
+// onForm submition
+todoForm.addEventListener("submit", (e) => {
+  e.preventDefault()
+
+  if (validateTask()) {
+    const task = getTask()
+    tasks.unshift(task)
+    createTaskElement(task)
+
+    clearData()
+  } else {
+    // Error Handeling!
+    console.error("Validator");
+  }
+
+  closePanel()
+});
+
+
+// Toggle add-todo panel
+addTodoButton.addEventListener('click', () => {
+  addTodoPanel.classList.toggle("add-todo-modal_display-show");
+  addTodoButton.classList.toggle("rotate-45");
+})
+
+
+// Get task
+function getTask() {
+  return {
     name: document.getElementById("task-name").value,
-    inMonth: document.getElementById("todo-in-month").value,
-    inDay: document.getElementById("min-in-day").value
-  };
-  printTask(task);
+    inDay: document.getElementById("minutes-a-day").value,
+    inMonth: document.getElementById("number-per-month").value,
+  }
 };
 
-const printTask = task => {
-  const todoContainer = document.querySelector(".todo-list");
-  const todoKhod = document.createElement("li");
-  todoKhod.classList.add("todo-list__items");
-  todoKhod.textContent = task.name;
-  todoContainer.appendChild(todoKhod);
+// Clear old data
+function clearData() {
+  document.getElementById("task-name").value = null
+  document.getElementById("minutes-a-day").value = null
+  document.getElementById("number-per-month").value = null
+}
 
-  closePanel();
+// Validate task
+function validateTask() {
+  const task = getTask()
+
+  return (!task.name) ? false : true
+}
+
+// Show add-todo panel
+function showPanel() {
+  addTodoPanel.classList.add("add-todo-modal_display-show");
+  addTodoButton.classList.add("rotate-45");
 };
 
-// Show add-todo Panel
-const showPanel = () => {
-  const addTodoBTN = document.getElementById("addTodoBTN");
-  addTodoBTN.classList.toggle("rotate-15");
-
-  const panel = document.getElementById("panel");
-  panel.classList.toggle("display");
+// Close add-todo panel
+function closePanel() {
+  addTodoPanel.classList.remove("add-todo-modal_display-show");
+  addTodoButton.classList.remove("rotate-45");
 };
 
-const closePanel = () => {
-  panel.classList.toggle("display");
+// Print task
+function createTaskElement({ name, inMonth, inDay }) {
+  const todoContainer = document.querySelector(".todos__todos-list");
+  const todoElement = document.createElement("li");
 
-  const addTodoBTN = document.getElementById("addTodoBTN");
-  addTodoBTN.classList.toggle("rotate-15");
+  todoElement.classList.add("input", "todos__items");
+  todoElement.addEventListener('click', (e) => taskDone(e))
+  todoElement.textContent = name;
+
+  todoContainer.appendChild(todoElement);
 };
 
-// Task Done [Change Color]
-
-const taskDone = () => {
-  const todoItem = document.querySelector(".todo-list__items");
-  todoItem.classList.toggle("task-done");
-};
-
-// const todoLi = document.querySelector(".todo-list__items");
-// todoLi.setAttribute("onClick", "taskDone()");
+// Task Done
+function taskDone(e) {
+  const el = e.target
+  el.classList.toggle("done"); 
+}
